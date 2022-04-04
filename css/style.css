@@ -46,7 +46,8 @@ body{
     background-color: #05c3ff;
     font-size: 35px;
     color: #101c2c;
-    display: none;
+    cursor: pointer;
+    top: 0
 }
 
 #gameOver{

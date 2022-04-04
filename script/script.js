@@ -55,7 +55,7 @@ let techs = [
     function createCardFace(face, card, element) {
 
         let cardElementFace = document.createElement('div')
-        cardElementFace.classList.add('face')
+        cardElementFace.classList.add(face)
         if(face == FRONT) {
             let iconElement = document.createElement('img')
             iconElement.classList.add(ICON)
