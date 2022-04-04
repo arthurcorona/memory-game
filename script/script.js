@@ -3,25 +3,10 @@ const BACK = "cardb"
 const CARD = "card"
 const ICON = "icon"
 
-let techs = [
-    'bootstrap',
-    'css',
-    'electron',
-    'firebase',
-    'html',
-    'javascript',
-    'jquery',
-    'mongo',
-    'node',
-    'react'
-]
-
-    let cards = null
-
     startGame()
 
     function startGame() {
-        cards = createCards(techs)
+        cards = game.createCards()
         shuffleCards(cards)
    
         initializeCards(cards) 
@@ -82,35 +67,6 @@ let techs = [
 
             [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
         }
-    }
-
-    //criando cartas
-    createCards(techs)
-    function createCards(techs) {
-        let cards = []
-
-        techs.forEach((tech) =>   {
-            cards.push(createPair(tech))
-        })
-    
-        return cards.flatMap(pair => pair)
-    }
-    
-
-    function createPair(tech) {
-        return [{
-            id: createId(tech),
-            icon: tech,
-            flipped: false
-        }, {
-            id: createId(tech),
-            icon: tech,
-            flipped: false
-        }  ]
-    }
-
-    function createId(tech) {
-        return tech + parseInt(Math.random() * 1000)
     }
 
     function flipCard() {
