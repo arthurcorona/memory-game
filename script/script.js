@@ -6,16 +6,13 @@ const ICON = "icon"
     startGame()
 
     function startGame() {
-        cards = game.createCards()
-        shuffleCards(cards)
-   
-        initializeCards(cards) 
+        initializeCards(game.createCards()) 
     }
 
     function initializeCards(cards) {
         let gameBoard = document.getElementById("gameBoard")
         
-        cards.forEach(card => {
+        game.cards.forEach(card => {
             
             let cardElement = document.createElement('div')
             cardElement.id = card.id
@@ -55,19 +52,7 @@ const ICON = "icon"
 
     }
 
-    //embaralhando cartas
-    function shuffleCards(cards) {
-        let currentIndex = cards.length
-        let randomIndex = 0
 
-        while (currentIndex != 0) {
-            
-            randomIndex = Math.floor(Math.random() * currentIndex)
-            currentIndex--
-
-            [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
-        }
-    }
 
     function flipCard() {
 
