@@ -11,7 +11,7 @@ const ICON = "icon"
 
     function initializeCards(cards) {
         let gameBoard = document.getElementById("gameBoard")
-        
+        gameBoard.innerHTML = ''
         game.cards.forEach(card => {
             
             let cardElement = document.createElement('div')
@@ -56,6 +56,38 @@ const ICON = "icon"
 
     function flipCard() {
 
-        this.classList.add("flip")
+        if(game.setCard(this.id)) {
 
+        
+
+      this.classList.add("flip")
+      if(game.secondC) {
+      if(game.checkMatch()) {
+          game.clearCards()
+          if(game.checkGameOver()) {
+              let gameOverLayer = document.getElementById("gameOver")
+              gameOverLayer.style.display = 'flex'
+          }
+      }
+      else{
+            setTimeout(()=> {
+          let firstCView = document.getElementById(game.firstC.id)
+          let secondCView = document.getElementById(game.secondC.id)
+
+          firstCView.classList.remove ('flip')
+          secondCView.classList.remove ('flip')
+          game.unflipCards()
+                }, 1000)
+            } 
+
+        }
     }
+
+}
+
+function restart () {
+    game.clearCards()
+    startGame()
+    let gameOverLayer = document.getElementById("gameOver")
+    gameOverLayer.style.display = 'none'
+}

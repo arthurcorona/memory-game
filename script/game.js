@@ -1,5 +1,9 @@
 let game = {
 
+    lockMode: false,
+    firstC: null,
+    secondC: null,
+
     techs: [
         'bootstrap',
         'css',
@@ -13,6 +17,60 @@ let game = {
         'react'
     ],
     
+
+    setCard: function (id) {
+
+        let card = this.cards.filter(card=>card.id === id)[0]
+
+        if(card.flipped || this.lockMode) {
+            return false
+        }
+    
+        if(!this.firstC) {
+            this.firstC = card
+            this.firstC.flipped = true
+            return true
+        }
+        else{
+            this.secondC = card
+            this.secondC.flipped = true
+            this.lockMode = true
+            return true
+        }
+
+
+    },
+
+    checkMatch: function() {
+
+        if(!this.firstC || !this.secondC) {
+            return false   
+        }
+        return this.firstC.icon === this.secondC.icon
+
+    },
+
+    clearCards: function () {
+    this.firstC = null
+    this.secondC = null
+    this.lockMode = false
+    
+    },
+
+    unflipCards () {
+
+        this.firstC.flipped = false
+        this.secondC.flipped = false
+        this.clearCards()
+
+    },
+
+    checkGameOver () {
+
+        return this.cards.filter(card => !card.flipped).length == 0
+
+    },
+
      cards: null,
     
     createCards: function() {
