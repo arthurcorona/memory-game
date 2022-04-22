@@ -84,3 +84,43 @@ body{
     grid-template: 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr;
     gap: 20px;
 }
+
+
+#mobile{
+    display: none;
+}
+
+
+@media only screen and (max-width: 700px){
+    
+    body{
+        background-color: white;
+    }
+    #mobile{
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        background-color: rgba(248, 222, 222, 0.85);
+        color: black;
+
+    }
+
+    .rs, span img{
+        padding: 20px 20px 20px 20px;
+    }
+
+    .redsoc{
+
+        width: 100px;
+    }
+
+    .redsoc:hover{
+        transform: scale(1.2) translateY(-10px);
+        transition: all .2s;
+        }
+
+    #gameBoard{
+        display: none;
+    }
+
+}
